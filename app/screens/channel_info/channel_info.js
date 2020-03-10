@@ -90,20 +90,6 @@ export default class ChannelInfo extends PureComponent {
         };
     }
 
-    static getDerivedStateFromProps(nextProps, state) {
-        if (state.isFavorite !== nextProps.isFavorite ||
-            state.isMuted !== nextProps.isChannelMuted ||
-            state.ignoreChannelMentions !== nextProps.ignoreChannelMentions) {
-            return {
-                isFavorite: nextProps.isFavorite,
-                isMuted: nextProps.isChannelMuted,
-                ignoreChannelMentions: nextProps.ignoreChannelMentions,
-            };
-        }
-
-        return null;
-    }
-
     componentDidMount() {
         this.navigationEventListener = Navigation.events().bindComponent(this);
         this.props.actions.getChannelStats(this.props.currentChannel.id);
